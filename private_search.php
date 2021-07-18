@@ -10,8 +10,6 @@ $objUser = new Collection();
 
 if(isset($_GET["search"])){
     $searchInput = $_GET["searchInput"];
-    echo $searchInput;
-  
     $sql="SELECT * FROM private_recipe WHERE valid = '1' AND (name LIKE '%".$searchInput."%') ORDER BY id ASC";
 }else{
     $sql="SELECT * FROM private_recipe WHERE valid = '1' ORDER BY id ASC";
@@ -19,10 +17,6 @@ if(isset($_GET["search"])){
 
     $stmt = $objUser->runQuery($sql);
     $stmt->execute();
-
-     //總共筆數
-    // $stmtTotal = $objUser->runQuery($sql);
-    // $stmtTotal->execute(); 
     $total=$stmt->rowCount();
 
 ?>
@@ -97,10 +91,6 @@ if(isset($_GET["search"])){
                 <span data-feather="x-circle"></span> 刪除勾選
             </button>
             <a class="btn btn-info" href="private_list.php">回上頁</a>
-            <!-- 新增 -->
-            <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
-                <span data-feather="plus-circle"></span> 新增
-            </button> -->
         </div>
 
         <div class="col-8 h4 m-0 text-right">
