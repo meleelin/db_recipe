@@ -69,9 +69,18 @@ $objUser = new Collection();
 
         // 單選跟全選
         let dataCount=$("tbody tr").length;
+        let selectCount=$("#selectAll").length;
+        document.getElementById("button").disabled=true;
+        
         $("tbody :checkbox").click(function(){
             let checkedCount=$("tbody :checked").length
-            // console.log(checkedCount)
+            
+            if(checkedCount>=1){
+			    document.getElementById('button').disabled=false;
+            }else{
+                document.getElementById('button').disabled=true;
+            }
+
             if(checkedCount===dataCount){
                 $("#selectAll").prop("checked",true)
             }else{
@@ -79,10 +88,19 @@ $objUser = new Collection();
             }
             let checked=$(this).prop("checked")
         })
+
         $("#selectAll").click(function(){
-            let checked=$(this).prop("checked")
-            $("tbody :checkbox").prop("checked",checked)
+            let selectBtn=$("thead :checked").length; 
+            let checked=$(this).prop("checked");
+            if(selectCount===selectBtn){
+                document.getElementById('button').disabled=false;
+            }else{
+                document.getElementById('button').disabled=true;
+            }
+            $("tbody :checkbox").prop("checked", checked);
         })
+        
+
     </script>
   </body>
 </html>
